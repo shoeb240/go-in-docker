@@ -3,6 +3,7 @@ Demonstration of Go API in docker.
 
 ## Simple API
 Lets first write a simple api in go so that we can run that in docker container.
+[main.go](https://github.com/shoeb240/Go-In-Docker/blob/master/main.go)
 ```cgo
 package main
 
@@ -38,7 +39,6 @@ To check how to run go api check [this](https://github.com/shoeb240/first-go-api
 
 ## Dockerfile
 We will create a dockerfile using base image golang:alpine. 
-
 ```dockerfile
 FROM golang:alpine AS builder
 ADD . /go/src/
@@ -130,6 +130,7 @@ I am responding to your API call
 ```
 
 Our app is running in docker container perfectly, but actually we do not need golang:alpine image anymore, which is heavy weight, after successful compilation and creation of executable file. So we can add another layer of docker build to throw what is unnecessary. We modify our dockefile:
+[Dockerfile](https://github.com/shoeb240/Go-In-Docker/blob/master/Dockerfile)
 ```dockerfile
 FROM golang:alpine AS builder
 ADD . /go/src/
@@ -156,10 +157,10 @@ go-in-docker_go                            latest              0573c97084f3     
 
 Our previous image `go_in_docker:1.0` was 334MB, now it is 11.3MB.
 
-##Docker compose
+## Docker compose
 I personally prefer docker-compose to run even single service docker container because you can create and remove docker container in a single command.
 
-docker-compose.yaml
+[docker-compose.yaml](https://github.com/shoeb240/Go-In-Docker/blob/master/docker-compose.yaml)
 ```text
 go:
   container_name: DOCKER_GO_API
