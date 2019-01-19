@@ -1,0 +1,9 @@
+go:
+  container_name: DOCKER_GO_API
+  build: .
+  restart: always
+  ports:
+    - "8081:8081"
+
+
+
